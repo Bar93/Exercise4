@@ -61,12 +61,12 @@ public class RealEstate {
         String username, password, phone;
         boolean regularUser=true, strongPass = false, correctPhone = false;
         int index = 0, counterDig = 0, counterChar = 0, userType;
-        System.out.println("enter a username");
+        System.out.println("Enter a username");
         username = scanner.nextLine();
         if (this.getUsers()!=null) {
             while (index < getUsers().length) {
                 if (this.getUsers()[index].getUsername().equals(username)) {
-                    System.out.println("the username in use, enter new username");
+                    System.out.println("The username in use, enter new username");
                     username = scanner.nextLine();
                     index = 0;
                 }
@@ -74,7 +74,7 @@ public class RealEstate {
             }
         }
         index = 0;
-        System.out.println("enter a password");
+        System.out.println("Enter a password");
         password = scanner.nextLine();
         while (strongPass == false){
         while (index < password.length()) {
@@ -94,12 +94,11 @@ public class RealEstate {
             index=0;
             counterChar=0;
             counterDig=0;
-            System.out.println("enter a strong password with one digit and char %/$/_");
+            System.out.println("Enter a strong password with one digit and char %/$/_");
             password = scanner.nextLine();
             }
         }
-        index=0;
-        System.out.println("enter a phone number");
+        System.out.println("Enter a phone number");
         phone = scanner.nextLine();
         while (correctPhone==false)
         {
@@ -115,7 +114,7 @@ public class RealEstate {
                 index++;
             }
             if (phone.length() != 10 || phone.charAt(0) != '0' || phone.charAt(1) != '5' || correctPhone==false) {
-                System.out.println("enter a correct phone number");
+                System.out.println("Enter a correct phone number");
                 phone = scanner.nextLine();
             }
             else {
@@ -358,19 +357,23 @@ public class RealEstate {
 
     public void printUserProperties(User onlineUser) {
         int index1 = 0;
-        while (index1 < getProperties().length) {
-            if (getProperties()[index1].getUser() == onlineUser) {
-                System.out.println(index1 + " . " + getProperties()[index1].toString());
-            }
-            index1++;
+            while (index1 < getProperties().length) {
+                if (getProperties()[index1].getUser() == onlineUser) {
+                    System.out.println(index1 + " . " + getProperties()[index1].toString());
+                }
+                index1++;
         }
     }
-
     public void printAllProperties() {
         int index1 = 0;
-        while (index1 < getProperties().length) {
-            System.out.println(index1 + " . " + getProperties()[index1].toString());
-            index1++;
+        if (getProperties().length==0){
+            System.out.println("don't have properties");
+        }
+        else {
+            while (index1 < getProperties().length) {
+                System.out.println(index1 + " . " + getProperties()[index1].toString());
+                index1++;
+            }
         }
     }
     public Property[] search() {
